@@ -1,3 +1,5 @@
+from traffic_signal import calculate_green_time
+
 print("AI Traffic Signal System")
 
 road_A = int(input("Road A par vehicles: "))
@@ -12,15 +14,16 @@ traffic = {
     "Road D": road_D
 }
 
+print("\n--- Automatic Signal Timing ---")
+
 for road, vehicles in traffic.items():
+    green_time = calculate_green_time(vehicles)
 
-    if vehicles >= 30:
-        green_time = 60
-    elif vehicles >= 20:
-        green_time = 40
-    elif vehicles >= 10:
-        green_time = 30
-    else:
-        green_time = 20
-
-    print(road, "-> GREEN", green_time, "seconds")
+    print(
+        road,
+        "->",
+        vehicles,
+        "vehicles -> GREEN",
+        green_time,
+        "seconds"
+    )
